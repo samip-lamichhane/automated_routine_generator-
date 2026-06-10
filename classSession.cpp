@@ -4,16 +4,16 @@ ClassSession::ClassSession(TimeSlot timeslot, std::string teacherid,std::string 
 TimeSlot ClassSession::getTimeSlot() const{
     return m_timeslot;
 }
-string ClassSession::getTeacherId() const{
+std::string ClassSession::getTeacherId() const{
     return m_teacherid;
 }
-string ClassSession::getSubjectId() const{
+std::string ClassSession::getSubjectId() const{
     return m_subjectid;
 }
-string ClassSession::getRoomId() const{
+std::string ClassSession::getRoomId() const{
     return m_roomid;
 }
-string ClassSession::getBatchId() const{
+std::string ClassSession::getBatchId() const{
     return m_batchid;
 
 }
