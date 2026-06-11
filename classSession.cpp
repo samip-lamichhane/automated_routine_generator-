@@ -1,19 +1,28 @@
 #include "timeslot.hpp"
-#include "classSession.hpp"
-ClassSession::ClassSession(TimeSlot timeslot, std::string teacherid,std::string subjectid,std::string roomid,std::string batchid ):m_timeslot(timeslot),m_teacherid(teacherid),m_subjectid(subjectid),m_batchid(batchid),m_roomid(roomid){}
-TimeSlot ClassSession::getTimeSlot() const{
+#include "class_session.hpp" // Fixed: Standardized filename casing
+
+// Fixed: Reordered initializer list to perfectly match the class declaration order (room before batch)
+ClassSession::ClassSession(TimeSlot timeslot, Instructor teacherid, Course subjectid, Room roomid, StudentBatch batchid)
+    : m_timeslot(timeslot), m_teacherid(teacherid), m_subjectid(subjectid), m_roomid(roomid), m_batchid(batchid)
+{
+}
+
+TimeSlot ClassSession::getTimeSlot() const {
     return m_timeslot;
 }
-std::string ClassSession::getTeacherId() const{
+
+Instructor ClassSession::getTeacherId() const {
     return m_teacherid;
 }
-std::string ClassSession::getSubjectId() const{
+
+Course ClassSession::getSubjectId() const {
     return m_subjectid;
 }
-std::string ClassSession::getRoomId() const{
+
+Room ClassSession::getRoomId() const {
     return m_roomid;
 }
-std::string ClassSession::getBatchId() const{
-    return m_batchid;
 
+StudentBatch ClassSession::getBatchId() const {
+    return m_batchid;
 }
