@@ -1,5 +1,5 @@
 #include "timeslot.hpp"
-#include "class_session.hpp" // Fixed: Standardized filename casing
+#include "classSession.hpp" // Fixed: Standardized filename casing
 
 // Fixed: Reordered initializer list to perfectly match the class declaration order (room before batch)
 ClassSession::ClassSession(TimeSlot timeslot, Instructor teacherid, Course subjectid, Room roomid, StudentBatch batchid)
