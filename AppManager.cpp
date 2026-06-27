@@ -13,8 +13,7 @@ void AppManager::addBatch(const StudentBatch& batch ){
 
 }
 void AppManager::addClassSession(const ClassSession& session){
-    m_timetable.push_bacK(session);
-
+    m_timetable.push_back(session);
 }
 Instructor* AppManager::findInstructorByName(const std::string& name){
  for(size_t i=0;i<m_masterInstructors.size(); ++i){

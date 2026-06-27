@@ -34,16 +34,16 @@ int main() {
     StudentBatch batch("BCT-2025-A", 48, ProgramType::BCE);
 
   
-    ClassSession session1(slot1, teacher, subject, classroom, batch);
+    ClassSession session1(slot1, &teacher, &subject, &classroom, &batch);
 
  
     std::cout << "--- Final Routine Entry Verification ---" << std::endl;
-    std::cout << "Course Code: " << session1.getSubjectId().getCourseCode() << std::endl;
-    std::cout << "Instructor:  " << session1.getTeacherId().getName() << std::endl;
-    std::cout << "Room:        " << session1.getRoomId().getRoomId() << " (Capacity: " << session1.getRoomId().getCapacity() << ")" << std::endl;
-    std::cout << "Batch:       " << session1.getBatchId().getBatchId() 
-              << " (Program: " << session1.getBatchId().getProgramAsString() 
-              << ", Strength: " << session1.getBatchId().getStrength() << " students)" << std::endl;
+    std::cout << "Course Code: " << session1.getSubjectId()->getCourseCode() << std::endl;
+    std::cout << "Instructor:  " << session1.getTeacherId()->getName() << std::endl;
+    std::cout << "Room:        " << session1.getRoomId()->getRoomId() << " (Capacity: " << session1.getRoomId()->getCapacity() << ")" << std::endl;
+    std::cout << "Batch:       " << session1.getBatchId()->getBatchId() 
+              << " (Program: " << session1.getBatchId()->getProgramAsString() 
+              << ", Strength: " << session1.getBatchId()->getStrength() << " students)" << std::endl;
     std::cout << "Duration:    " << session1.getTimeSlot().getDurationmin() << " minutes" << std::endl;
     
     
