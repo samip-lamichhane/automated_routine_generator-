@@ -1,0 +1,17 @@
+# Build artifacts
+*.exe
+*.o
+*.obj
+
+# Qt build output
+Makefile
+Makefile.*
+ui_*.h
+.qmake.stash
+build/
+debug/
+release/
+
+# IDE settings
+.qtcreator/
+*.pro.user
