@@ -15,6 +15,8 @@ public:
     Instructor(std::string instructorName, int maxHours);
 
     std::string getName() const;
+    int getMaxLimitHours() const;
+    const std::vector<Course>& getAssignedCourses() const;
     
     // The logic functions you need to adapt for your tracking challenge:
     int calculateTotalAssignedHours() const;

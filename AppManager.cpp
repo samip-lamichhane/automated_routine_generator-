@@ -53,3 +53,15 @@ Room* AppManager::findRoomById(const std::string& id){
 const std::vector<ClassSession>& AppManager::getTimetable() const{
     return m_timetable;
 }
+const std::vector<Instructor>& AppManager::getInstructors() const {
+    return m_masterInstructors;
+}
+const std::vector<Course>& AppManager::getCourses() const {
+    return m_masterCourses;
+}
+const std::vector<Room>& AppManager::getRooms() const {
+    return m_masterRooms;
+}
+const std::vector<StudentBatch>& AppManager::getBatches() const {
+    return m_masterBatches;
+}
