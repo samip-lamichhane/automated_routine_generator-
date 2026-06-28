@@ -10,6 +10,14 @@ std::string Instructor::getName() const {
     return name;
 }
 
+int Instructor::getMaxLimitHours() const {
+    return maxLimitHours;
+}
+
+const std::vector<Course>& Instructor::getAssignedCourses() const {
+    return assignedCourses;
+}
+
 // Logic to count total hours assigned across the whole schedule so far
 int Instructor::calculateTotalAssignedHours() const {
     int total = 0;
