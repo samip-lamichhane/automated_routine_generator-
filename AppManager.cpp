@@ -14,6 +14,7 @@ void AppManager::addBatch(const StudentBatch& batch ){
 }
 void AppManager::addClassSession(const ClassSession& session){
     m_timetable.push_back(session);
+
 }
 Instructor* AppManager::findInstructorByName(const std::string& name){
  for(size_t i=0;i<m_masterInstructors.size(); ++i){
@@ -53,15 +54,23 @@ Room* AppManager::findRoomById(const std::string& id){
 const std::vector<ClassSession>& AppManager::getTimetable() const{
     return m_timetable;
 }
-const std::vector<Instructor>& AppManager::getInstructors() const {
-    return m_masterInstructors;
+bool AppManager::saveSystemData(const std::string& filename){
+std::ofstream outFile(filename);
+if(!outFile.is_open()) return false;//failed to create or open file 
+for(size_t i=0;i<m_masterInstructors.size();++i){
+    outFile<<"INSTRUCTOR|"<<m_masterInstructors[i].getName()<<"|"<<m_masterInstructors[i].calculateTotalAssignedHours()<<"\n";
+
 }
-const std::vector<Course>& AppManager::getCourses() const {
-    return m_masterCourses;
+for(size_t i=0;i<m_masterRooms.size();++i){
+    outFile<<"ROOM|"<<m_masterRooms[i].getRoomId()<<"|"<<m_masterRooms[i].getCapacity()<<"\n";
+
 }
-const std::vector<Room>& AppManager::getRooms() const {
-    return m_masterRooms;
+for(size_t i=0;i<m_masterCourses.size();++i){
+    outFile<<"COURSES|"<<m_masterCourses[i].getCourseCode()<<"|"<<m_masterCourses[i].getAllocatedHours()<<"\n";
+
 }
-const std::vector<StudentBatch>& AppManager::getBatches() const {
-    return m_masterBatches;
+for(size_t i=0;i<m_masterBatches.size();++i){
+    outFile<<"ROOM|"<<m_masterBatches[i].getBatchId()<<"|"<<m_masterBatches[i].getProgramAsString()<<"\n";
+}
+
 }

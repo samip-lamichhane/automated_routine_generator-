@@ -5,8 +5,9 @@
 #include "Instructor.hpp"
 #include "Course.hpp"
 #include "Room.hpp"
-#include "Student_Batch.hpp"
+#include "Student_batch.hpp"
 #include "classSession.hpp"
+#include <fstream>
 class AppManager{
     private:
     std::vector<Instructor> m_masterInstructors;
@@ -17,6 +18,7 @@ class AppManager{
     std::vector<ClassSession> m_timetable; //Final generated Container
     public:
     AppManager()= default;
+    //samip ko qt le call garna parxa
     void addInstructor(const Instructor& instructor);
     void addRoom(const Room& room);
     void addCourse(const Course& course);
@@ -29,11 +31,8 @@ class AppManager{
     StudentBatch* findBatchById(const std::string& id);
 
     const std::vector<ClassSession>& getTimetable() const;
-    const std::vector<Instructor>& getInstructors() const;
-    const std::vector<Course>& getCourses() const;
-    const std::vector<Room>& getRooms() const;
-    const std::vector<StudentBatch>& getBatches() const;
-
+    bool saveSystemData(const std::string& filename);
+    bool loadSystemData(const std::string& filename);
 
 } ;
 #endif
