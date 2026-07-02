@@ -14,9 +14,10 @@ class TimeSlot{
     Day m_day;
     ClockTime m_start_time;
     ClockTime m_end_time;
-    int convertToMinutes(const ClockTime& time) const {
+     int convertToMinutes(const ClockTime& time) const {
         return time.hours * 60 + time.minutes;
     }
+public:
 public:
 TimeSlot(Day day,ClockTime startTime,ClockTime endTime);
 Day getDay() const;
@@ -25,4 +26,5 @@ ClockTime getEndTime() const;
 int getDurationmin() const;
 bool overlapsWith(const TimeSlot& other) const;
 };
+
 #endif
