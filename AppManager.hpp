@@ -30,6 +30,7 @@ class AppManager{
     Room* findRoomById(const std::string& id);
     StudentBatch* findBatchById(const std::string& id);
 
+    
     const std::vector<ClassSession>& getTimetable() const;
     bool saveSystemData(const std::string& filename);
     bool loadSystemData(const std::string& filename);

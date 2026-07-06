@@ -19,6 +19,7 @@ int TimeSlot::getDurationmin() const{
     return duration;
 }
 
+
 bool TimeSlot::overlapsWith(const TimeSlot& other) const {
     int thisStart = convertToMinutes(m_start_time);
     int thisEnd = convertToMinutes(m_end_time);
