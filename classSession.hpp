@@ -3,7 +3,7 @@
 
 #include "timeslot.hpp"
 #include "Instructor.hpp"
-#include "room.hpp"
+#include "Room.hpp"
 #include "Student_batch.hpp"
 #include "Course.hpp"
 #include <string>
