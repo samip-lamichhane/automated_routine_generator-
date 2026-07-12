@@ -90,3 +90,9 @@ Timetable routines and master lists are persisted inside a file named `timetable
 *   On first launch, if no file is found, the system seeds default mockup entries automatically.
 *   All additions (Instructors, Courses, Rooms, Student Batches, or Scheduled Slots) are saved immediately.
 *   You can copy or share this JSON file to move schedules between workspaces.
+
+
+qt.md : 
+# Qt Module Documentation (Supervisor Q&A)
+
+
