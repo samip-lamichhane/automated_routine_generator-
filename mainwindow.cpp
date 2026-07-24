@@ -489,14 +489,14 @@ void MainWindow::setupUI()
 
     m_btnDialogDelete->setStyleSheet(R"(
         QPushButton {
-            background-color: #C25B3A;
-            color: #FFFFFF;
+            background-color: #6B3654;
+            color: #E8DDC7;
             border: none;
             border-radius: 4px;
             padding: 8px 16px;
             font-weight: bold;
         }
-        QPushButton:hover { background-color: #C25B3A; }
+        QPushButton:hover { background-color: #55293F; }
     )");
     m_btnDialogDelete->setVisible(false); // Only shown in Edit mode
 
@@ -551,8 +551,8 @@ void MainWindow::setupUI()
     QPushButton *btnSessionDelete = new QPushButton("Delete Class Session");
     btnSessionDelete->setStyleSheet(R"(
         QPushButton {
-            background-color: #C25B3A;
-            color: #FFFFFF;
+            background-color: #6B3654;
+            color: #E8DDC7;
             border: none;
             border-radius: 8px;
             padding: 12px 20px;
@@ -560,7 +560,7 @@ void MainWindow::setupUI()
             font-size: 15px;
             font-family: 'Segoe UI', Helvetica, sans-serif;
         }
-        QPushButton:hover { background-color: #C25B3A; }
+        QPushButton:hover { background-color: #55293F; }
     )");
     connect(btnSessionDelete, &QPushButton::clicked, this, &MainWindow::onDeleteClassSession);
 
@@ -661,7 +661,7 @@ void MainWindow::setupUI()
             background-color: #E8DDC7;
         }
         QHeaderView::section:horizontal {
-            background-color: #8B2E1F;
+            background-color: #6E6E6E;
             color: #E8DDC7;
             font-weight: 500;
             font-size: 11px;
@@ -669,12 +669,15 @@ void MainWindow::setupUI()
             border: none;
         }
         QHeaderView::section:vertical {
-            background-color: #8B2E1F;
+            background-color: #6E6E6E;
             color: #E8DDC7;
             font-weight: bold;
             font-size: 11px;
             padding: 4px;
             border: none;
+        }
+        QTableWidget QTableCornerButton::section {
+            background-color: #6E6E6E;
         }
         QTableWidget::item {
             padding: 4px;
