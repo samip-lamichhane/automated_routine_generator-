@@ -55,17 +55,17 @@ MainWindow::MainWindow(QWidget *parent)
     // Catppuccin-inspired dark stylesheet (unchanged from original)
     this->setStyleSheet(R"(
         QMainWindow {
-            background-color: #F2F0EC;
+            background-color: #EFEAE0;
         }
         QTabWidget::pane {
-            border: 1px solid #C9C2B4;
-            background-color: #F2F0EC;
+            border: 1px solid #C4BCA8;
+            background-color: #EFEAE0;
             border-radius: 8px;
         }
         QTabBar::tab {
-            background: #F2F0EC;
+            background: #EFEAE0;
             color: #8B8478;
-            border: 1px solid #C9C2B4;
+            border: 1px solid #C4BCA8;
             padding: 10px 20px;
             border-top-left-radius: 6px;
             border-top-right-radius: 6px;
@@ -73,9 +73,9 @@ MainWindow::MainWindow(QWidget *parent)
             font-family: 'Segoe UI', Helvetica, sans-serif;
         }
         QTabBar::tab:selected, QTabBar::tab:hover {
-            background: #F2F0EC;
-            border-bottom-color: #F2F0EC;
-            color: #B8875A;
+            background: #EFEAE0;
+            border-bottom-color: #EFEAE0;
+            color: #A6713E;
         }
         QLabel {
             color: #3A342C;
@@ -84,24 +84,24 @@ MainWindow::MainWindow(QWidget *parent)
             font-weight: 500;
         }
         QLineEdit, QSpinBox, QComboBox, QTimeEdit {
-            background-color: #E8E4DC;
+            background-color: #E5E2DC;
             color: #3A342C;
-            border: 1px solid #C9C2B4;
+            border: 1px solid #C4BCA8;
             border-radius: 6px;
             padding: 6px;
             font-size: 13px;
             font-family: 'Segoe UI', Helvetica, sans-serif;
         }
         QLineEdit:focus, QSpinBox:focus, QComboBox:focus, QTimeEdit:focus {
-            border: 1px solid #B8875A;
+            border: 1px solid #A6713E;
         }
         QLineEdit:disabled, QSpinBox:disabled, QComboBox:disabled, QTimeEdit:disabled {
-            background-color: #F2F0EC;
+            background-color: #EFEAE0;
             color: #8B8478;
-            border: 1px solid #C9C2B4;
+            border: 1px solid #C4BCA8;
         }
         QPushButton {
-            background-color: #B8875A;
+            background-color: #A6713E;
             color: #3A342C;
             border: none;
             border-radius: 6px;
@@ -111,33 +111,33 @@ MainWindow::MainWindow(QWidget *parent)
             font-family: 'Segoe UI', Helvetica, sans-serif;
         }
         QPushButton:hover {
-            background-color: #A17542;
+            background-color: #8C5E30;
         }
         QPushButton:pressed {
-            background-color: #A17542;
+            background-color: #8C5E30;
         }
         QPushButton:disabled {
-            background-color: #E8E4DC;
+            background-color: #E5E2DC;
             color: #8B8478;
         }
         QListWidget, QTableWidget {
-            background-color: #F2F0EC;
+            background-color: #EFEAE0;
             color: #3A342C;
-            border: 1px solid #C9C2B4;
+            border: 1px solid #C4BCA8;
             border-radius: 8px;
             padding: 5px;
             font-family: 'Segoe UI', Helvetica, sans-serif;
         }
         QHeaderView::section {
-            background-color: #E8E4DC;
+            background-color: #E5E2DC;
             color: #3A342C;
-            border: 1px solid #C9C2B4;
+            border: 1px solid #C4BCA8;
             padding: 6px;
             font-weight: bold;
             font-family: 'Segoe UI', Helvetica, sans-serif;
         }
         QTableWidget QTableCornerButton::section {
-            background-color: #E8E4DC;
+            background-color: #E5E2DC;
         }
         QCheckBox {
             color: #3A342C;
@@ -148,24 +148,24 @@ MainWindow::MainWindow(QWidget *parent)
         QCheckBox::indicator {
             width: 16px;
             height: 16px;
-            border: 2px solid #C9C2B4;
+            border: 2px solid #C4BCA8;
             border-radius: 4px;
-            background-color: #E8E4DC;
+            background-color: #E5E2DC;
         }
         QCheckBox::indicator:checked {
-            background-color: #B8875A;
-            border-color: #B8875A;
+            background-color: #A6713E;
+            border-color: #A6713E;
         }
         QCheckBox::indicator:disabled {
             background-color: #6B8F5A;
             border-color: #6B8F5A;
         }
         QGroupBox {
-            color: #B8875A;
+            color: #A6713E;
             font-size: 13px;
             font-weight: bold;
             font-family: 'Segoe UI', Helvetica, sans-serif;
-            border: 1px solid #C9C2B4;
+            border: 1px solid #C4BCA8;
             border-radius: 8px;
             margin-top: 12px;
             padding-top: 8px;
@@ -176,9 +176,9 @@ MainWindow::MainWindow(QWidget *parent)
             padding: 0 6px;
         }
         QTextEdit {
-            background-color: #F2F0EC;
+            background-color: #EFEAE0;
             color: #3A342C;
-            border: 1px solid #C9C2B4;
+            border: 1px solid #C4BCA8;
             border-radius: 8px;
             padding: 8px;
             font-family: 'Segoe UI', Helvetica, sans-serif;
@@ -189,12 +189,12 @@ MainWindow::MainWindow(QWidget *parent)
             border: none;
         }
         QScrollBar:vertical {
-            background: #F2F0EC;
+            background: #EFEAE0;
             width: 8px;
             border-radius: 4px;
         }
         QScrollBar::handle:vertical {
-            background: #C9C2B4;
+            background: #C4BCA8;
             border-radius: 4px;
             min-height: 20px;
         }
@@ -430,7 +430,7 @@ void MainWindow::setupUI()
     m_addSessionDialog = new QDialog(this);
     m_addSessionDialog->setWindowTitle("Add Class Session");
     m_addSessionDialog->setModal(true);
-    m_addSessionDialog->setStyleSheet("QDialog { background-color: #F2F0EC; color: #3A342C; } QLabel { color: #3A342C; }");
+    m_addSessionDialog->setStyleSheet("QDialog { background-color: #EFEAE0; color: #3A342C; } QLabel { color: #3A342C; }");
     QVBoxLayout *dialogLayout = new QVBoxLayout(m_addSessionDialog);
 
     QFormLayout *sessionForm = new QFormLayout();
@@ -466,25 +466,25 @@ void MainWindow::setupUI()
     
     m_btnDialogSchedule->setStyleSheet(R"(
         QPushButton {
-            background-color: #B8875A;
+            background-color: #A6713E;
             color: #3A342C;
             border: none;
             border-radius: 4px;
             padding: 8px 16px;
             font-weight: bold;
         }
-        QPushButton:hover { background-color: #A17542; }
+        QPushButton:hover { background-color: #8C5E30; }
     )");
     
     btnDialogCancel->setStyleSheet(R"(
         QPushButton {
-            background-color: #E8E4DC;
+            background-color: #E5E2DC;
             color: #3A342C;
             border: none;
             border-radius: 4px;
             padding: 8px 16px;
         }
-        QPushButton:hover { background-color: #C9C2B4; }
+        QPushButton:hover { background-color: #C4BCA8; }
     )");
 
     m_btnDialogDelete->setStyleSheet(R"(
@@ -532,7 +532,7 @@ void MainWindow::setupUI()
     QPushButton *btnOpenAddDialog = new QPushButton("+ Add Class Session");
     btnOpenAddDialog->setStyleSheet(R"(
         QPushButton {
-            background-color: #B8875A;
+            background-color: #A6713E;
             color: #3A342C;
             border: none;
             border-radius: 8px;
@@ -541,7 +541,7 @@ void MainWindow::setupUI()
             font-size: 15px;
             font-family: 'Segoe UI', Helvetica, sans-serif;
         }
-        QPushButton:hover { background-color: #A17542; }
+        QPushButton:hover { background-color: #8C5E30; }
     )");
     connect(btnOpenAddDialog, &QPushButton::clicked, this, [this]() {
         openSessionDialogForAdd();
@@ -579,7 +579,7 @@ void MainWindow::setupUI()
             font-family: 'Segoe UI', Helvetica, sans-serif;
         }
         QPushButton:hover { background-color: #6B8F5A; }
-        QPushButton:disabled { background-color: #E8E4DC; color: #8B8478; }
+        QPushButton:disabled { background-color: #E5E2DC; color: #8B8478; }
     )");
     connect(m_btnAutoGenerate, &QPushButton::clicked, this, &MainWindow::onAutoGenerate);
 
@@ -600,9 +600,9 @@ void MainWindow::setupUI()
 
     m_timetableSubTabs = new QTabWidget();
     m_timetableSubTabs->setStyleSheet(R"(
-        QTabWidget::pane { border: 1px solid #C9C2B4; background: #F2F0EC; }
-        QTabBar::tab { background: #F2F0EC; color: #8B8478; padding: 8px 16px; border: 1px solid #C9C2B4; }
-        QTabBar::tab:selected { background: #F2F0EC; color: #B8875A; border-bottom-color: #F2F0EC; font-weight: bold; }
+        QTabWidget::pane { border: 1px solid #C4BCA8; background: #EFEAE0; }
+        QTabBar::tab { background: #EFEAE0; color: #8B8478; padding: 8px 16px; border: 1px solid #C4BCA8; }
+        QTabBar::tab:selected { background: #EFEAE0; color: #A6713E; border-bottom-color: #EFEAE0; font-weight: bold; }
     )");
 
     // 1. "Schedule" Tab
@@ -619,29 +619,29 @@ void MainWindow::setupUI()
     // 2. "Grid View" Tab
     QWidget *gridTab = new QWidget();
     gridTab->setObjectName("gridTabContainer");
-    gridTab->setStyleSheet("QWidget#gridTabContainer { background-color: #F2F0EC; }");
+    gridTab->setStyleSheet("QWidget#gridTabContainer { background-color: #EFEAE0; }");
     QVBoxLayout *gridLayout = new QVBoxLayout(gridTab);
     gridLayout->setContentsMargins(0, 8, 0, 0);
 
     m_viewBatchCombo = new QComboBox();
     m_viewBatchCombo->addItem("-- Select Batch to View --", QVariant(""));
     m_viewBatchCombo->setStyleSheet(R"(
-        QComboBox { background-color: #E8E4DC; color: #B8875A; border: none; border-radius: 8px; padding: 4px 12px; font-weight: bold; }
+        QComboBox { background-color: #E5E2DC; color: #A6713E; border: none; border-radius: 8px; padding: 4px 12px; font-weight: bold; }
         QComboBox::drop-down { border: none; }
-        QComboBox:hover { background-color: #C9C2B4; }
+        QComboBox:hover { background-color: #C4BCA8; }
     )");
     connect(m_viewBatchCombo, &QComboBox::currentIndexChanged, this, &MainWindow::onViewBatchChanged);
 
     m_btnRefreshGrid = new QPushButton("Refresh Grid");
     m_btnRefreshGrid->setStyleSheet(R"(
-        QPushButton { background-color: #E8E4DC; color: #B8875A; border: none; border-radius: 8px; padding: 6px 12px; font-weight: bold; }
-        QPushButton:hover { background-color: #C9C2B4; }
+        QPushButton { background-color: #E5E2DC; color: #A6713E; border: none; border-radius: 8px; padding: 6px 12px; font-weight: bold; }
+        QPushButton:hover { background-color: #C4BCA8; }
     )");
     connect(m_btnRefreshGrid, &QPushButton::clicked, this, &MainWindow::onRefreshGridClicked);
 
     QHBoxLayout *gridHeaderLayout = new QHBoxLayout();
     QLabel *lblDisplayBatch = new QLabel("Display Batch:");
-    lblDisplayBatch->setStyleSheet("color: #B8875A; font-weight: bold;");
+    lblDisplayBatch->setStyleSheet("color: #A6713E; font-weight: bold;");
     gridHeaderLayout->addWidget(lblDisplayBatch);
     gridHeaderLayout->addWidget(m_viewBatchCombo);
     gridHeaderLayout->addWidget(m_btnRefreshGrid);
@@ -655,22 +655,22 @@ void MainWindow::setupUI()
     m_timetableGrid->verticalHeader()->setMinimumWidth(80);
     m_timetableGrid->setStyleSheet(R"(
         QTableWidget {
-            gridline-color: #F2F0EC;
-            border: 2px solid #C9C2B4; 
+            gridline-color: #EFEAE0;
+            border: 2px solid #C4BCA8; 
             border-radius: 8px;
-            background-color: #F2F0EC;
+            background-color: #EFEAE0;
         }
         QHeaderView::section:horizontal {
-            background-color: #E8E4DC;
-            color: #B8875A;
+            background-color: #9A9A9A;
+            color: #3A342C;
             font-weight: 500;
             font-size: 11px;
             padding: 4px;
             border: none;
         }
         QHeaderView::section:vertical {
-            background-color: #E8E4DC;
-            color: #B8875A;
+            background-color: #9A9A9A;
+            color: #3A342C;
             font-weight: bold;
             font-size: 11px;
             padding: 4px;
@@ -742,9 +742,9 @@ void MainWindow::setupConstraintsTab()
 
     const QString chipStyle = R"(
         QCheckBox {
-            background-color: #F2F0EC;
+            background-color: #EFEAE0;
             color: #3A342C;
-            border: 1px solid #C9C2B4;
+            border: 1px solid #C4BCA8;
             border-radius: 6px;
             padding: 6px 12px;
         }
@@ -752,12 +752,12 @@ void MainWindow::setupConstraintsTab()
             width: 0px; height: 0px;
         }
         QCheckBox:checked {
-            background-color: #F2F0EC;
-            color: #B8875A;
-            border-color: #B8875A;
+            background-color: #EFEAE0;
+            color: #A6713E;
+            border-color: #A6713E;
         }
         QCheckBox:hover {
-            background-color: #F2F0EC;
+            background-color: #EFEAE0;
         }
     )";
 
@@ -817,9 +817,9 @@ void MainWindow::setupConstraintsTab()
     // Live capacity label
     m_capacityLabel = new QLabel("Available capacity: —");
     m_capacityLabel->setStyleSheet(
-        "color: #B8875A; font-weight: bold; font-size: 13px; "
-        "padding: 6px 10px; background-color: #F2F0EC; "
-        "border: 1px solid #C9C2B4; border-radius: 6px;");
+        "color: #A6713E; font-weight: bold; font-size: 13px; "
+        "padding: 6px 10px; background-color: #EFEAE0; "
+        "border: 1px solid #C4BCA8; border-radius: 6px;");
     timeLayout->addWidget(m_capacityLabel);
 
     layout->addWidget(timeGroup);
@@ -902,9 +902,9 @@ void MainWindow::setupConstraintsTab()
     // Style text edit exactly like the list widgets in the other tabs
     m_validationOutput->setStyleSheet(
         "QTextEdit {"
-        "  background-color: #F2F0EC;"
+        "  background-color: #EFEAE0;"
         "  color: #3A342C;"
-        "  border: 1px solid #C9C2B4;"
+        "  border: 1px solid #C4BCA8;"
         "  border-radius: 8px;"
         "  padding: 5px;"
         "  font-family: 'Segoe UI', Helvetica, sans-serif;"
@@ -1936,11 +1936,11 @@ void MainWindow::refreshTimetableGrid()
             font.setPointSize(11);
             item->setFont(font);
             if (isLunch) {
-                item->setBackground(QColor("#E8E4DC"));
+                item->setBackground(QColor("#E5E2DC"));
                 item->setForeground(QColor("#8B8478"));
             } else {
-                item->setBackground(QColor("#F2F0EC"));
-                item->setForeground(QColor("#C9C2B4"));
+                item->setBackground(QColor("#EFEAE0"));
+                item->setForeground(QColor("#C4BCA8"));
             }
             m_timetableGrid->setItem(r, c, item);
         }
