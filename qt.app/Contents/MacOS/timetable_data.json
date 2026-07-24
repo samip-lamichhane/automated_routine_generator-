@@ -869,18 +869,6 @@
         {
             "batch": "CE C",
             "course": "EDRG102P",
-            "day": 0,
-            "endH": 11,
-            "endM": 0,
-            "instructor": "25",
-            "room": "9-310",
-            "sessionId": "9d721224ff5fbbf7d3f45dcf6c40096",
-            "startH": 10,
-            "startM": 0
-        },
-        {
-            "batch": "CE C",
-            "course": "EDRG102P",
             "day": 2,
             "endH": 13,
             "endM": 0,
@@ -941,18 +929,6 @@
         {
             "batch": "CE C",
             "course": "ENGG102",
-            "day": 0,
-            "endH": 12,
-            "endM": 0,
-            "instructor": "2",
-            "room": "9-310",
-            "sessionId": "c8bd3a4880dc7ac42802e21c3da10c75",
-            "startH": 11,
-            "startM": 0
-        },
-        {
-            "batch": "CE C",
-            "course": "ENGG102",
             "day": 2,
             "endH": 16,
             "endM": 0,
@@ -972,18 +948,6 @@
             "room": "9-310",
             "sessionId": "42aad2e10dbadd42387840e794e4ed5",
             "startH": 16,
-            "startM": 0
-        },
-        {
-            "batch": "CE C",
-            "course": "ENGG102",
-            "day": 0,
-            "endH": 13,
-            "endM": 0,
-            "instructor": "2",
-            "room": "9-310",
-            "sessionId": "73aef5f3a1a31290cd9a43035191b2e1",
-            "startH": 12,
             "startM": 0
         },
         {
