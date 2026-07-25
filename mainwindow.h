@@ -2,26 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTabWidget>
-#include <QWidget>
+#include <QDialog>
 #include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QGridLayout>
-#include <QFormLayout>
-#include <QLineEdit>
-#include <QSpinBox>
 #include <QComboBox>
 #include <QPushButton>
-#include <QListWidget>
-#include <QTableWidget>
-#include <QLabel>
 #include <QTimeEdit>
-#include <QMessageBox>
-#include <QVector>
-#include <QScrollArea>
 #include <QCheckBox>
-#include <QGroupBox>
-#include <QTextEdit>
+#include <QVector>
 
 #include "AppManager.hpp"
 #include "ConstraintSettings.hpp"
@@ -32,35 +19,23 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+class CRUDManager;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    friend class CRUDManager;
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
 private slots:
-    void onAddInstructor();
-    void onEditInstructor();
-    void onDeleteInstructor();
     void onSubjectCountChanged(int count);  // rebuilds the dynamic subject dropdowns
-    void onAddCourse();
-    void onEditCourse();
-    void onDeleteCourse();
-    void onAddRoom();
-    void onEditRoom();
-    void onDeleteRoom();
-    void onAddBatch();
-    void onEditBatch();
-    void onDeleteBatch();
-    void onAddClassSession();
-    void onDeleteClassSession();
     void onAutoGenerate();
     void onViewBatchChanged(); // Triggers a redraw of the timetable grid
     void onRefreshGridClicked(); // Manually refreshes the grid
     void onGridCellClicked(int row, int col); // Edit-in-place: handles occupied/empty cell clicks
-    void onResetAllData(); // Global reset
 
     // ── Constraints tab slots ────────────────────────────────────────────────
     void onValidateConstraints();
@@ -69,14 +44,16 @@ private slots:
 private:
     Ui::MainWindow *ui;
     AppManager m_appManager;
+    CRUDManager* m_crudManager;
 
     // ── Constraint state ─────────────────────────────────────────────────────
-    bool              m_constraintsValidated = false;
+    bool               m_constraintsValidated = false;
     ConstraintSettings m_constraints;
 
     // ── Helper methods ────────────────────────────────────────────────────────
-    void setupUI();
-    void setupConstraintsTab();
+    void setupSessionDialog();     // builds the Add/Edit session QDialog
+    void connectSignals();         // wires all signal/slot connections
+    void applyDynamicStyles();     // applies per-widget stylesheets after setupUi
     void populateCombos();
     void refreshListsAndTables();
     void refreshTimetableGrid();
@@ -90,49 +67,19 @@ private:
     ConstraintSettings readConstraintsFromUI() const;
 
     // ── Edit-in-place helpers ─────────────────────────────────────────────────
-    // Opens the session dialog pre-filled with the session identified by sessionId (Edit mode).
     void openSessionDialogForEdit(const std::string& sessionId);
-    // Opens the session dialog for a new session, optionally pre-filling day/time
-    // from the clicked empty grid cell (row = day index, col = time-slot index).
     void openSessionDialogForAdd(int prefillDayRow = -1, int prefillColSlot = -1);
-    // Resets the session dialog to a clean Add-mode state (clears m_editingSessionId,
-    // restores button labels, hides Delete button).
     void resetSessionDialogToAddMode();
 
-    // ── Tab widget ────────────────────────────────────────────────────────────
-    QTabWidget *m_tabWidget;
+    // ── Dynamic subject combos (created at runtime inside instSubjectContainer) ──
+    QVBoxLayout          *m_instSubjectLayout; // obtained from ui->instSubjectContainer->layout()
+    QVector<QComboBox*>   m_instSubjectCombos;
 
-    // ── Instructor UI ─────────────────────────────────────────────────────────
-    QLineEdit   *m_instIdEdit;
-    QLineEdit   *m_instNameEdit;
-    QSpinBox    *m_instHoursSpin;
-    QSpinBox    *m_instSubjectCountSpin;
-    QWidget     *m_instSubjectContainer;
-    QVBoxLayout *m_instSubjectLayout;
-    QVector<QComboBox*> m_instSubjectCombos;
-    QListWidget *m_instList;
+    // ── Day checkbox array (mirrors ui->dayCheck0…dayCheck6 for loop access) ──
+    QCheckBox *m_dayChecks[7]; // [0]=Sun,[1]=Mon,...,[6]=Sat
 
-    // ── Course UI ─────────────────────────────────────────────────────────────
-    QLineEdit   *m_courseCodeEdit;
-    QLineEdit   *m_courseNameEdit;
-    QSpinBox    *m_courseHoursSpin;
-    QListWidget *m_courseList;
-
-    // ── Room UI ───────────────────────────────────────────────────────────────
-    QLineEdit *m_roomIdEdit;
-    QLineEdit *m_roomBuildingEdit;
-    QSpinBox  *m_roomCapSpin;
-    QComboBox *m_roomTypeCombo;
-    QListWidget *m_roomList;
-
-    // ── Batch UI ──────────────────────────────────────────────────────────────
-    QLineEdit *m_batchIdEdit;
-    QSpinBox  *m_batchStrengthSpin;
-    QComboBox *m_batchProgCombo;
-    QLineEdit *m_batchDeptEdit;
-    QListWidget *m_batchList;
-
-    // ── Session / Generate UI ─────────────────────────────────────────────────
+    // ── Session dialog (kept fully programmatic — complex edit-mode toggling) ─
+    QDialog      *m_addSessionDialog;
     QComboBox    *m_sessInstCombo;
     QComboBox    *m_sessCourseCombo;
     QComboBox    *m_sessRoomCombo;
@@ -140,14 +87,6 @@ private:
     QComboBox    *m_sessDayCombo;
     QTimeEdit    *m_sessStartEdit;
     QTimeEdit    *m_sessEndEdit;
-    QComboBox    *m_viewBatchCombo;    // Dropdown to select batch for visual grid
-    QTabWidget   *m_timetableSubTabs;  // Holds Schedule and Grid views
-    QTableWidget *m_timetableTable;    // Flat row-by-row table (Schedule)
-    QTableWidget *m_timetableGrid;     // Visual grid
-    QPushButton  *m_btnRefreshGrid;    // Refreshes visual grid
-    QPushButton  *m_btnAutoGenerate;   // kept as member so we can enable/disable it
-    QPushButton  *m_btnResetAllData;   // Global clear button
-    QDialog      *m_addSessionDialog;  // Dialog for adding/editing class sessions
 
     // ── Session dialog buttons (promoted to members for Edit-mode toggling) ───
     QPushButton  *m_btnDialogSchedule; // "Schedule Class Session" / "Save Changes"
@@ -155,31 +94,6 @@ private:
 
     // ── Edit-in-place state ───────────────────────────────────────────────────
     QString       m_editingSessionId;  // empty = Add mode, non-empty = Edit mode
-
-    // ── Constraints tab UI ────────────────────────────────────────────────────
-    // Working days
-    QCheckBox *m_dayChecks[7];         // [0]=Sun,[1]=Mon,...,[6]=Sat
-    // Time window
-    QTimeEdit *m_dayStartEdit;
-    QTimeEdit *m_dayEndEdit;
-    // Lunch break
-    QCheckBox *m_lunchEnabledCheck;
-    QTimeEdit *m_lunchStartEdit;
-    QTimeEdit *m_lunchEndEdit;
-    // Live capacity display
-    QLabel    *m_capacityLabel;
-    // Rule checkboxes
-    QCheckBox *m_ruleNoInstDoubleBook;
-    QCheckBox *m_ruleNoRoomDoubleBook;
-    QCheckBox *m_ruleNoBatchClash;
-    QCheckBox *m_ruleInstDayGap;
-    QCheckBox *m_ruleNoSameSubjectConsec;
-    QCheckBox *m_ruleMaxWeeklyHours;
-    QCheckBox *m_ruleMaxConsecHoursEnabled;
-    QSpinBox  *m_maxConsecHoursSpin;
-    QCheckBox *m_ruleSubjectLock;      // always checked, disabled (read-only)
-    // Validation output
-    QTextEdit   *m_validationOutput;
 
     // ── Editing states ────────────────────────────────────────────────────────
     std::string m_editingInstId;

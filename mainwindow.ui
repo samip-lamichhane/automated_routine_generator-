@@ -6,20 +6,1313 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Routine Generator</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="centralLayout">
+    <property name="margin" stdset="0">
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="instTab">
+       <attribute name="title">
+        <string>Instructors</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="instTabLayout">
+        <item>
+         <layout class="QVBoxLayout" name="instLeftLayout">
+          <item>
+           <layout class="QFormLayout" name="instForm">
+            <item row="0" column="0">
+             <widget class="QLabel" name="lblInstId">
+              <property name="text">
+               <string>Instructor ID:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="instIdEdit"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="lblInstName">
+              <property name="text">
+               <string>Instructor Name:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="instNameEdit"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="lblInstHours">
+              <property name="text">
+               <string>Max Weekly Hours:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="instHoursSpin">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>20</number>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="lblInstSubjectCount">
+              <property name="text">
+               <string>Number of Subjects:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSpinBox" name="instSubjectCountSpin">
+              <property name="toolTip">
+               <string>How many subjects will this instructor teach?</string>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>3</number>
+              </property>
+              <property name="value">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="instSubjectLayout">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <property name="margin" stdset="0">
+             <number>0</number>
+            </property>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="instBtnLayout">
+            <item>
+             <widget class="QPushButton" name="btnInstAdd">
+              <property name="text">
+               <string>Add Instructor</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnInstEdit">
+              <property name="text">
+               <string>Edit Instructor</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnInstDelete">
+              <property name="text">
+               <string>Delete Instructor</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="instSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="instList"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="courseTab">
+       <attribute name="title">
+        <string>Courses</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="courseTabLayout">
+        <item>
+         <layout class="QVBoxLayout" name="courseLeftLayout">
+          <item>
+           <layout class="QFormLayout" name="courseForm">
+            <item row="0" column="0">
+             <widget class="QLabel" name="lblCourseCode">
+              <property name="text">
+               <string>Course Code:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="courseCodeEdit"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="lblCourseName">
+              <property name="text">
+               <string>Course Name:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="courseNameEdit"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="lblCourseHours">
+              <property name="text">
+               <string>Credit Hours:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="courseHoursSpin">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>20</number>
+              </property>
+              <property name="value">
+               <number>3</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="courseBtnLayout">
+            <item>
+             <widget class="QPushButton" name="btnCourseAdd">
+              <property name="text">
+               <string>Add Course</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnCourseEdit">
+              <property name="text">
+               <string>Edit Course</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnCourseDelete">
+              <property name="text">
+               <string>Delete Course</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="courseSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="courseList"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="roomTab">
+       <attribute name="title">
+        <string>Rooms</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="roomTabLayout">
+        <item>
+         <layout class="QVBoxLayout" name="roomLeftLayout">
+          <item>
+           <layout class="QFormLayout" name="roomForm">
+            <item row="0" column="0">
+             <widget class="QLabel" name="lblRoomId">
+              <property name="text">
+               <string>Room Number:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="roomIdEdit"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="lblRoomBuilding">
+              <property name="text">
+               <string>Building:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="roomBuildingEdit"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="lblRoomCap">
+              <property name="text">
+               <string>Capacity:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="roomCapSpin">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>500</number>
+              </property>
+              <property name="value">
+               <number>60</number>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="lblRoomType">
+              <property name="text">
+               <string>Room Type:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QComboBox" name="roomTypeCombo">
+              <item>
+               <property name="text">
+                <string>Theory</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Lab</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Auditorium</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="roomBtnLayout">
+            <item>
+             <widget class="QPushButton" name="btnRoomAdd">
+              <property name="text">
+               <string>Add Room</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnRoomEdit">
+              <property name="text">
+               <string>Edit Room</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnRoomDelete">
+              <property name="text">
+               <string>Delete Room</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="roomSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="roomList"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="batchTab">
+       <attribute name="title">
+        <string>Student Batches</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="batchTabLayout">
+        <item>
+         <layout class="QVBoxLayout" name="batchLeftLayout">
+          <item>
+           <layout class="QFormLayout" name="batchForm">
+            <item row="0" column="0">
+             <widget class="QLabel" name="lblBatchId">
+              <property name="text">
+               <string>Batch Name:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="batchIdEdit"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="lblBatchDept">
+              <property name="text">
+               <string>Department:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="batchDeptEdit"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="lblBatchStrength">
+              <property name="text">
+               <string>Strength:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="batchStrengthSpin">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>200</number>
+              </property>
+              <property name="value">
+               <number>45</number>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="lblBatchProg">
+              <property name="text">
+               <string>Program:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QComboBox" name="batchProgCombo">
+              <item>
+               <property name="text">
+                <string>BIT</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>BCE</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>BCS</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="batchBtnLayout">
+            <item>
+             <widget class="QPushButton" name="btnBatchAdd">
+              <property name="text">
+               <string>Add Batch</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnBatchEdit">
+              <property name="text">
+               <string>Edit Batch</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnBatchDelete">
+              <property name="text">
+               <string>Delete Batch</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="batchSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="batchList"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="constraintsTab">
+       <attribute name="title">
+        <string>Constraints</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="constraintsTabLayout">
+        <item>
+         <widget class="QSplitter" name="constraintsSplitter">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <widget class="QScrollArea" name="constraintsScroll">
+           <property name="frameShape">
+            <enum>QFrame::Shape::NoFrame</enum>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="constraintsInner">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>778</width>
+              <height>812</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="constraintsInnerLayout">
+             <property name="spacing">
+              <number>16</number>
+             </property>
+             <property name="leftMargin">
+              <number>10</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="constraintsHeaderLbl">
+               <property name="styleSheet">
+                <string>font-size: 18px; font-weight: bold;</string>
+               </property>
+               <property name="text">
+                <string>⚙  Constraints &amp; Rules</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="constraintsSubLbl">
+               <property name="text">
+                <string>Configure scheduling constraints and run a feasibility check before generating the timetable.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="daysGroup">
+               <property name="title">
+                <string>Working Days  (unchecked = holiday, sessions never placed)</string>
+               </property>
+               <layout class="QGridLayout" name="daysLayout">
+                <property name="spacing">
+                 <number>8</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QCheckBox" name="dayCheck0">
+                  <property name="text">
+                   <string>Sun</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QCheckBox" name="dayCheck1">
+                  <property name="text">
+                   <string>Mon</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QCheckBox" name="dayCheck2">
+                  <property name="text">
+                   <string>Tue</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QCheckBox" name="dayCheck3">
+                  <property name="text">
+                   <string>Wed</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QCheckBox" name="dayCheck4">
+                  <property name="text">
+                   <string>Thu</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QCheckBox" name="dayCheck5">
+                  <property name="text">
+                   <string>Fri</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QCheckBox" name="dayCheck6">
+                  <property name="text">
+                   <string>Sat</string>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="timeGroup">
+               <property name="title">
+                <string>Daily Time Window</string>
+               </property>
+               <layout class="QVBoxLayout" name="timeGroupLayout">
+                <item>
+                 <layout class="QHBoxLayout" name="timeRow1">
+                  <item>
+                   <widget class="QLabel" name="lblDayStart">
+                    <property name="text">
+                     <string>Day Start:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTimeEdit" name="dayStartEdit">
+                    <property name="displayFormat">
+                     <string>HH:mm</string>
+                    </property>
+                    <property name="time">
+                     <time>
+                      <hour>9</hour>
+                      <minute>0</minute>
+                      <second>0</second>
+                     </time>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="timeRow1Spacer1">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>15</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblDayEnd">
+                    <property name="text">
+                     <string>Day End:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTimeEdit" name="dayEndEdit">
+                    <property name="displayFormat">
+                     <string>HH:mm</string>
+                    </property>
+                    <property name="time">
+                     <time>
+                      <hour>17</hour>
+                      <minute>0</minute>
+                      <second>0</second>
+                     </time>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="timeRow1Stretch">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="timeRow2">
+                  <item>
+                   <widget class="QCheckBox" name="lunchEnabledCheck">
+                    <property name="text">
+                     <string>Enable Lunch Break</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="timeRow2Spacer1">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>15</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblLunchStart">
+                    <property name="text">
+                     <string>Lunch Start:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTimeEdit" name="lunchStartEdit">
+                    <property name="displayFormat">
+                     <string>HH:mm</string>
+                    </property>
+                    <property name="time">
+                     <time>
+                      <hour>13</hour>
+                      <minute>0</minute>
+                      <second>0</second>
+                     </time>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="timeRow2Spacer2">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Policy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>15</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="lblLunchEnd">
+                    <property name="text">
+                     <string>Lunch End:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTimeEdit" name="lunchEndEdit">
+                    <property name="displayFormat">
+                     <string>HH:mm</string>
+                    </property>
+                    <property name="time">
+                     <time>
+                      <hour>14</hour>
+                      <minute>0</minute>
+                      <second>0</second>
+                     </time>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="timeRow2Stretch">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QLabel" name="capacityLabel">
+                  <property name="text">
+                   <string>Available capacity: —</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="rulesGroup">
+               <property name="title">
+                <string>Scheduling Rules</string>
+               </property>
+               <layout class="QVBoxLayout" name="rulesLayout">
+                <property name="spacing">
+                 <number>10</number>
+                </property>
+                <item>
+                 <widget class="QCheckBox" name="ruleNoInstDoubleBook">
+                  <property name="toolTip">
+                   <string>Same instructor cannot be in two places at the same time</string>
+                  </property>
+                  <property name="text">
+                   <string>No Instructor Clash</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="ruleNoRoomDoubleBook">
+                  <property name="toolTip">
+                   <string>Same room cannot hold two sessions at the same time</string>
+                  </property>
+                  <property name="text">
+                   <string>No Room Clash</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="ruleNoBatchClash">
+                  <property name="toolTip">
+                   <string>Same batch cannot have two sessions at the same time</string>
+                  </property>
+                  <property name="text">
+                   <string>No Batch Clash</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="ruleInstDayGap">
+                  <property name="toolTip">
+                   <string>Instructor needs at least one gap day between teaching days</string>
+                  </property>
+                  <property name="text">
+                   <string>Instructor Day Gap</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="ruleNoSameSubjectConsec">
+                  <property name="toolTip">
+                   <string>A course can't repeat on back-to-back days for the same batch</string>
+                  </property>
+                  <property name="text">
+                   <string>Subject Day Gap</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="ruleMaxWeeklyHours">
+                  <property name="toolTip">
+                   <string>No instructor exceeds their configured weekly hour limit</string>
+                  </property>
+                  <property name="text">
+                   <string>Max Weekly Hours</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="consecRow">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QCheckBox" name="ruleMaxConsecHoursEnabled">
+                    <property name="toolTip">
+                     <string>Caps consecutive teaching hours per instructor per day</string>
+                    </property>
+                    <property name="text">
+                     <string>Max Daily Hours</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QSpinBox" name="maxConsecHoursSpin">
+                    <property name="minimum">
+                     <number>1</number>
+                    </property>
+                    <property name="maximum">
+                     <number>12</number>
+                    </property>
+                    <property name="value">
+                     <number>3</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="consecStretch">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="ruleSubjectLock">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>Instructors only teach their assigned subject(s) — always on, core to the data model</string>
+                  </property>
+                  <property name="text">
+                   <string>Subject Lock (Locked)</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnValidate">
+               <property name="text">
+                <string>✔  Validate Constraints</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="constraintsBottomSpacer">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="constraintsRightPanel">
+           <layout class="QVBoxLayout" name="constraintsRightLayout">
+            <property name="leftMargin">
+             <number>10</number>
+            </property>
+            <property name="topMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="validationOutputLbl">
+              <property name="styleSheet">
+               <string>font-size: 14px; font-weight: bold;</string>
+              </property>
+              <property name="text">
+               <string>Validation Results:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="validationOutput">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="placeholderText">
+               <string>Click &quot;Validate Constraints&quot; to run a feasibility check...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="timetableTab">
+       <attribute name="title">
+        <string>Generate &amp; View Timetable</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="timetableTabLayout">
+        <item>
+         <layout class="QVBoxLayout" name="timetableLeftLayout">
+          <item>
+           <widget class="QPushButton" name="btnOpenAddDialog">
+            <property name="text">
+             <string>+ Add Class Session</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="ttSpacer1">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Policy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnAutoGenerate">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Auto Generate Routine</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="genStatusLabel">
+            <property name="styleSheet">
+             <string>color: #C25B3A; font-size: 12px;</string>
+            </property>
+            <property name="text">
+             <string>⚠  Validate constraints first (Constraints tab) before generating.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="ttSpacer2">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Policy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>10</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnSessionDelete">
+            <property name="text">
+             <string>Delete Class Session</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="ttSpacer3">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Policy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnResetAllData">
+            <property name="text">
+             <string>Reset All Data</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="ttBottomSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="timetableRightLayout">
+          <item>
+           <widget class="QTabWidget" name="timetableSubTabs">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="flatTab">
+             <attribute name="title">
+              <string>Schedule</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="flatTabLayout">
+              <property name="margin" stdset="0">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableWidget" name="timetableTable">
+                <property name="editTriggers">
+                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                </property>
+                <column>
+                 <property name="text">
+                  <string>Day</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Time</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Course</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Instructor</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Room</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Batch</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Duration</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="gridTab">
+             <attribute name="title">
+              <string>Grid View</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="gridTabLayout">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>8</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout" name="gridHeaderLayout">
+                <item>
+                 <widget class="QLabel" name="lblDisplayBatch">
+                  <property name="styleSheet">
+                   <string>color: #A83A28; font-weight: bold;</string>
+                  </property>
+                  <property name="text">
+                   <string>Display Batch:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="viewBatchCombo">
+                  <item>
+                   <property name="text">
+                    <string>-- Select Batch to View --</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnRefreshGrid">
+                  <property name="text">
+                   <string>Refresh Grid</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="gridHeaderStretch">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="timetableGrid">
+                <property name="editTriggers">
+                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1200</width>
      <height>25</height>
     </rect>
    </property>
