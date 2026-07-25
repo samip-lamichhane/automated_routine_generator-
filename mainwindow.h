@@ -60,6 +60,7 @@ private slots:
     void onViewBatchChanged(); // Triggers a redraw of the timetable grid
     void onRefreshGridClicked(); // Manually refreshes the grid
     void onGridCellClicked(int row, int col); // Edit-in-place: handles occupied/empty cell clicks
+    void onResetAllData(); // Global reset
 
     // ── Constraints tab slots ────────────────────────────────────────────────
     void onValidateConstraints();
@@ -145,6 +146,7 @@ private:
     QTableWidget *m_timetableGrid;     // Visual grid
     QPushButton  *m_btnRefreshGrid;    // Refreshes visual grid
     QPushButton  *m_btnAutoGenerate;   // kept as member so we can enable/disable it
+    QPushButton  *m_btnResetAllData;   // Global clear button
     QDialog      *m_addSessionDialog;  // Dialog for adding/editing class sessions
 
     // ── Session dialog buttons (promoted to members for Edit-mode toggling) ───

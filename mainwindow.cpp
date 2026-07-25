@@ -583,6 +583,24 @@ void MainWindow::setupUI()
     )");
     connect(m_btnAutoGenerate, &QPushButton::clicked, this, &MainWindow::onAutoGenerate);
 
+    // Reset All Data button
+    m_btnResetAllData = new QPushButton("Reset All Data");
+    m_btnResetAllData->setStyleSheet(R"(
+        QPushButton {
+            background-color: #B22222;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 15px;
+            font-family: 'Segoe UI', Helvetica, sans-serif;
+        }
+        QPushButton:hover { background-color: #8B0000; }
+    )");
+    connect(m_btnResetAllData, &QPushButton::clicked, this, &MainWindow::onResetAllData);
+
+
     // Status label under auto-generate button
     QLabel *genStatusLabel = new QLabel(
         "⚠  Validate constraints first (Constraints tab) before generating.");
@@ -596,6 +614,8 @@ void MainWindow::setupUI()
     timetableFormLayout->addWidget(genStatusLabel);
     timetableFormLayout->addSpacing(10);
     timetableFormLayout->addWidget(btnSessionDelete);
+    timetableFormLayout->addSpacing(30);
+    timetableFormLayout->addWidget(m_btnResetAllData);
     timetableFormLayout->addStretch();
 
     m_timetableSubTabs = new QTabWidget();
@@ -2920,4 +2940,40 @@ void MainWindow::onAutoGenerate()
         .arg(startH,2,10,QChar('0')).arg(startM,2,10,QChar('0'))
         .arg(endH,2,10,QChar('0')).arg(endM,2,10,QChar('0'))
         .arg(lunchInfo));
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Reset All Data
+// ──────────────────────────────────────────────────────────────────────────────
+
+void MainWindow::onResetAllData() {
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Confirm Reset All Data");
+    msgBox.setText("This will permanently delete ALL instructors, courses, rooms, student batches, and scheduled sessions. This cannot be undone. Are you sure you want to continue?");
+    msgBox.setIcon(QMessageBox::Warning);
+    
+    QPushButton *cancelBtn = msgBox.addButton("Cancel", QMessageBox::RejectRole);
+    QPushButton *deleteBtn = msgBox.addButton("Delete Everything", QMessageBox::DestructiveRole);
+    msgBox.setDefaultButton(cancelBtn);
+
+    msgBox.exec();
+
+    if (msgBox.clickedButton() == deleteBtn) {
+        m_appManager.clearAllData();
+        
+        // Reset Constraints state but NOT the rules
+        markConstraintsDirty();
+        if (m_validationOutput) {
+            m_validationOutput->setHtml("");
+            m_validationOutput->setPlaceholderText("Click \"Validate Constraints\" to run a feasibility check...");
+        }
+
+        // Save empty state to file
+        saveToFile();
+
+        // Refresh all UI tabs to clear old data from screen
+        refreshListsAndTables();
+        refreshInstList();
+        refreshTimetableGrid();
+    }
 }

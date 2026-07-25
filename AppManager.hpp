@@ -108,6 +108,8 @@ public:
 
     // Auto-generation — now driven by ConstraintSettings
     void clearTimetable();
+    void clearAllData();
+
     std::string autoGenerateTimetable(const ConstraintSettings& cs = ConstraintSettings{});
 
     // Busy-check helpers (used by generator and by the UI session form)

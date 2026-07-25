@@ -522,6 +522,14 @@ void AppManager::clearTimetable() {
   m_timetable.clear();
 }
 
+void AppManager::clearAllData() {
+  m_masterInstructors.clear();
+  m_masterCourses.clear();
+  m_masterRooms.clear();
+  m_masterBatches.clear();
+  m_timetable.clear();
+}
+
 int AppManager::countInstructorScheduledHours(const std::string& instructorId, const std::string& skipSessionId) const {
     int count = 0;
     for (const auto& sess : m_timetable) {
