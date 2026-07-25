@@ -1,6 +1,6 @@
 #include "AppManager.hpp"
 #include <algorithm>
-
+#include <random>
 // ──────────────────────────────────────────────────────────────────────────────
 // Basic CRUD
 // ──────────────────────────────────────────────────────────────────────────────
@@ -654,17 +654,57 @@ std::string AppManager::autoGenerateTimetable(const ConstraintSettings &cs) {
               continue;
 
             // ── Find a free room ────────────────────────────────
-            Room *freeRoom = nullptr;
+            // Heuristic for Lab-type vs Theory-type courses
+            bool needsLab = (course.getName().find("Lab") != std::string::npos || 
+                             course.getName().find("Laboratory") != std::string::npos || 
+                             course.getCode().find("Lab") != std::string::npos ||
+                             course.getCode().find("LAB") != std::string::npos ||
+                             course.getName().find("Project") != std::string::npos ||
+                             course.getName().find("Drawing") != std::string::npos ||
+                             course.getName().find("Workshop") != std::string::npos);
+            RoomType requiredType = needsLab ? RoomType::Lab : RoomType::Theory;
+
+            // Gather candidate rooms
+            std::vector<Room*> candidateRooms;
             for (size_t rIdx = 0; rIdx < m_masterRooms.size(); ++rIdx) {
               Room &rm = m_masterRooms[rIdx];
-              if (!cs.ruleNoRoomDoubleBook ||
-                  !isRoomBusyAt(rm.getRoomId(), slot)) {
+              if (rm.getType() != requiredType) continue; // Must match required room type
+
+              if (!cs.ruleNoRoomDoubleBook || !isRoomBusyAt(rm.getRoomId(), slot)) {
                 if (rm.getCapacity() >= batch.getStrength()) {
-                  freeRoom = &rm;
-                  break;
+                  candidateRooms.push_back(&rm);
                 }
               }
             }
+
+            Room *freeRoom = nullptr;
+            if (!candidateRooms.empty()) {
+                // For soft consistency, see if this course+batch already has a room assigned in the timetable
+                Room* preferredRoom = nullptr;
+                for (const auto& existingSession : m_timetable) {
+                    if (existingSession.getSubjectId()->getCourseCode() == course.getCourseCode() && 
+                        existingSession.getBatchId()->getBatchId() == batch.getBatchId()) {
+                        preferredRoom = existingSession.getRoomId();
+                        break; // found the room this batch is already using for this course
+                    }
+                }
+
+                if (preferredRoom) {
+                    auto it = std::find(candidateRooms.begin(), candidateRooms.end(), preferredRoom);
+                    if (it != candidateRooms.end()) {
+                        freeRoom = preferredRoom; // Reuse if still valid and available
+                    }
+                }
+
+                if (!freeRoom) {
+                    // Randomly select a valid room
+                    static std::random_device rd;
+                    static std::mt19937 gen(rd());
+                    std::uniform_int_distribution<size_t> dist(0, candidateRooms.size() - 1);
+                    freeRoom = candidateRooms[dist(gen)];
+                }
+            }
+
             if (!freeRoom)
               continue;
 

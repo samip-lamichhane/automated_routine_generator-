@@ -1185,12 +1185,23 @@ void MainWindow::onValidateConstraints()
 
     int roomCount  = static_cast<int>(rooms.size());
     int batchCount = static_cast<int>(batches.size());
-    if (roomCount >= batchCount)
-        pass(QString("Room count (%1) is sufficient for the number of simultaneous batches (%2).")
-             .arg(roomCount).arg(batchCount));
-    else
+    int labCount = 0;
+    int theoryCount = 0;
+    int audCount = 0;
+    for (const auto& r : rooms) {
+        if (r.getType() == RoomType::Lab) labCount++;
+        else if (r.getType() == RoomType::Theory) theoryCount++;
+        else if (r.getType() == RoomType::Auditorium) audCount++;
+    }
+
+    if (roomCount >= batchCount) {
+        pass(QString("Room count (%1) is sufficient for the number of simultaneous batches (%2).<br>"
+                     "&nbsp;&nbsp;&nbsp;&nbsp;Breakdown: %3 Theory, %4 Lab, %5 Auditorium.")
+             .arg(roomCount).arg(batchCount).arg(theoryCount).arg(labCount).arg(audCount));
+    } else {
         fail(QString("Only %1 room(s) but %2 concurrent batch(es) may need scheduling simultaneously.")
              .arg(roomCount).arg(batchCount));
+    }
 
     // ── Final verdict ───────────────────────────────────────────────────────
     output += "<br>";
