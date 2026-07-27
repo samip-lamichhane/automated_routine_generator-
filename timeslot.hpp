@@ -29,9 +29,7 @@ public:
 
     bool overlapsWith(const TimeSlot& other) const;
 
-    // Returns the overlap (in minutes) between this slot and a configurable
-    // Defaults to the legacy hard-coded 11:00–12:00 window when called with
-    // no arguments so that existing call sites remain valid.
+    // Defaults hard-coded 11:00–12:00 window when called with  no arguments so that existing call sites remain valid.
     int lunchBreakOverlapMinutes(int lunchStartMin = 11 * 60,
                                   int lunchEndMin   = 12 * 60) const;
 };
