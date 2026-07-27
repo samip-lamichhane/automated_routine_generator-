@@ -34,8 +34,6 @@ bool TimeSlot::overlapsWith(const TimeSlot& other) const {
 
 // Configurable lunch-break overlap check.
 // lunchStartMin and lunchEndMin are minutes from midnight (e.g. 13*60 = 780).
-// Default values (11:00–12:00) match the old hard-coded behaviour so
-// existing call sites without arguments continue to work.
 int TimeSlot::lunchBreakOverlapMinutes(int lunchStartMin, int lunchEndMin) const {
     int thisStart = m_start_time.hours * 60 + m_start_time.minutes;
     int thisEnd   = m_end_time.hours   * 60 + m_end_time.minutes;
