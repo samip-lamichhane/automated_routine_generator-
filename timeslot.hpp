@@ -2,8 +2,6 @@
 #define TIMESLOT_H
 #include <string>
 
-// Day enum — backward-compatible extension.
-// Mon=0…Fri=4 are UNCHANGED so existing saved JSON integers remain valid.
 // Sunday=5 and Saturday=6 are the new values for the two extra days.
 enum class Day {
     Monday=0, Tuesday, Wednesday, Thursday, Friday,
@@ -32,7 +30,6 @@ public:
     bool overlapsWith(const TimeSlot& other) const;
 
     // Returns the overlap (in minutes) between this slot and a configurable
-    // lunch window [lunchStartMin, lunchEndMin).
     // Defaults to the legacy hard-coded 11:00–12:00 window when called with
     // no arguments so that existing call sites remain valid.
     int lunchBreakOverlapMinutes(int lunchStartMin = 11 * 60,
